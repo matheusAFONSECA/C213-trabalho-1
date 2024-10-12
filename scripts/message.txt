@@ -1,4 +1,5 @@
-feat(project): Base code for interface
+feat(project): Code for PID
 
-A base code using streamlit 
-was created.
+Code used to plot
+the graphs and calculus
+for PID of the project.
