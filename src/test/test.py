@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io
 import control as ctl
+from icecream import ic
 
 # Carregar os dados do arquivo MAT
 arquivo_mat = r'dataset/Dataset_Grupo6.mat'
@@ -145,6 +146,7 @@ ti_chr = tau_estimado
 td_chr = theta_estimado / 2
 kp_chr = (0.6 * tau_estimado) / (K * theta_estimado)
 temp_chr, sinal_resp_chr = CHR(kp_chr, ti_chr, td_chr)
+ic(temp_chr, sinal_resp_chr)
 grafico(temp_chr, sinal_resp_chr, tempo, "Resposta com Controlador CHR")
 
 # Controlador ITAE

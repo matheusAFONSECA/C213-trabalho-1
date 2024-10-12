@@ -1,7 +1,6 @@
 import streamlit as st
 import scipy.io
 import control as ctl
-import numpy as np
 from models.pid_model import estimate_pid_values
 from utils.plot_utils import (
     plot_dataset_graph,

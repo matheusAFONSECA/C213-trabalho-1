@@ -1,4 +1,5 @@
-feat(project): Function of plot closed loop
+feat(project): Plots of CHR and ITAE
 
-The function which plots
-the closed loop was added
+Now the interface can plot 
+the ITAE and CHR ajustments of
+the PDI.

@@ -48,3 +48,16 @@ def plot_graph_closed_loop(tempo_fechada, saida_fechada, tempo, degrau, titulo):
     ax.legend()
     
     return fig
+
+def plot_graph_pid(tempo_res, sinal_res, tempo, Titulo, degrau, amplitude_degrau):
+    fig, ax = plt.subplots()
+
+    ax.plot(tempo_res, sinal_res * amplitude_degrau, label= Titulo)
+    ax.plot(tempo_res, degrau, label='Degrau de Entrada')
+    ax.set_xlabel('Tempo (segundos)')
+    ax.set_xlim([0, len(tempo) * 0.1])
+    ax.set_ylabel('Saída')
+    ax.set_title(Titulo)
+    ax.legend(loc='lower right')
+
+    return fig  
