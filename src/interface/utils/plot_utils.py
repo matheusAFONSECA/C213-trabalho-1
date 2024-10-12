@@ -37,3 +37,14 @@ def plot_graph_open_loop(tempo_aberta, saida_aberta, tempo, degrau, titulo):
     ax.legend()
     
     return fig
+
+def plot_graph_closed_loop(tempo_fechada, saida_fechada, tempo, degrau, titulo):
+    fig, ax = plt.subplots()
+    ax.plot(tempo_fechada, saida_fechada, label="Saída em Malha Fechada")
+    ax.plot(tempo, degrau, label="Degrau de Entrada")
+    ax.set_xlabel('Tempo [s]')
+    ax.set_ylabel('Amplitude')
+    ax.set_title(titulo)
+    ax.legend()
+    
+    return fig

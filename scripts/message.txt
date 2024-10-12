@@ -1,5 +1,4 @@
-feat(project): Function of plot added
+feat(project): Function of plot closed loop
 
-The function with the porpuse to 
-plot the graph of the loop 
-opened/closed 
+The function which plots
+the closed loop was added
