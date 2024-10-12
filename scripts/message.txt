@@ -1,7 +1,8 @@
-feat(project): Requirements and scripts
+feat(project): Notebook added
 
-Adding requirements.txt to 
-controll the version of the 
-python enviroment. It was 
-added scripts to help the 
-project.
+A Notebook that runs
+all the parts of the
+pid control studies was
+added. A package with
+all plots were added 
+too.
