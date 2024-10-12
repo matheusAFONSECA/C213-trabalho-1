@@ -1,5 +1,4 @@
-feat(project): Plots of CHR and ITAE
+feat(project): Interface done
 
-Now the interface can plot 
-the ITAE and CHR ajustments of
-the PDI.
+The interface runs 
+properly.

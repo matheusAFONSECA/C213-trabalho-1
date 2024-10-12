@@ -1,19 +1,4 @@
-import matplotlib.pyplot as plt
-import numpy as np
-
-def plot_graph_2(values, option2):
-    k, t, c = values
-    fig, ax = plt.subplots()
-    x = np.linspace(0, 10, 100)
-    
-    if option2 == "CHR":
-        y = k * np.exp(-t * x) + c  # Simulação para CHR
-    else:
-        y = k * np.sin(t * x) + c   # Simulação para ITAE
-    
-    ax.plot(x, y)
-    ax.set_title(f"Gráfico PID - {option2}")
-    return fig
+import matplotlib.pyplot as plt # type: ignore
 
 def plot_dataset_graph(tempo, degrau, saida_motor, titulo):
     fig, ax = plt.subplots()

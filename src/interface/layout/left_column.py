@@ -1,6 +1,5 @@
 import streamlit as st
-import scipy.io
-import control as ctl
+import control as ctl       # type: ignore
 from models.pid_model import estimate_pid_values
 from utils.plot_utils import (
     plot_dataset_graph,
@@ -9,31 +8,24 @@ from utils.plot_utils import (
 )
 
 
-def render_left_column(arquivo_mat):
+def render_left_column(tempo, degrau, saida_motor):
     """
     Função responsável por renderizar a coluna esquerda com o gráfico e os controles.
     """
     st.subheader("Dados do circuito")
+
+    with st.container(height=350):
+        plot_title_graph = st.empty()  # Cria um espaço reservado para o título do gráfico
+        # Placeholder para o gráfico
+        plot_left_placeholder = st.empty()  # Cria um espaço reservado para o gráfico
+
 
     # Inicializa o gráfico com a opção padrão do rádio
     option = st.radio(
         "Escolha o gráfico:", ("Dataset", "Malha Aberta", "Malha Fechada"), index=0
     )
 
-    # Atualiza o título do gráfico da esquerda com base na opção selecionada
-    st.subheader(f"{option}")
-
-    # Carregar os dados do arquivo MAT e plotar o dataset
-    dados_mat = scipy.io.loadmat(arquivo_mat)
-    tempo = dados_mat["TARGET_DATA____ProjetoC213_Degrau"][
-        0, :
-    ]  # Primeira linha como tempo
-    degrau = dados_mat["TARGET_DATA____ProjetoC213_Degrau"][
-        1, :
-    ]  # Segunda linha como valores do degrau
-    saida_motor = dados_mat["TARGET_DATA____ProjetoC213_PotenciaMotor"][
-        1, :
-    ]  # Segunda linha como saída do motor
+    plot_title_graph.subheader(f"{option}")
 
     # Calcular e plotar a malha aberta
     K, tau_estimado, theta_estimado = estimate_pid_values(tempo, degrau, saida_motor)
@@ -76,4 +68,4 @@ def render_left_column(arquivo_mat):
         )
 
     # Placeholder para o gráfico da esquerda
-    plot_left_placeholder = st.pyplot(fig_left)
+    plot_left_placeholder.pyplot(fig_left)  # Placeholder para o gráfico da esquerda

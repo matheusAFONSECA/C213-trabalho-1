@@ -1,18 +1,13 @@
-import control as ctl
-from icecream import ic
+import control as ctl  # type: ignore
 
-def calculate_pid(k, t, c):
-    # Simulação de um cálculo PID simples
-    return k, t, c
 
 def estimate_pid_values(tempo, degrau, saida_motor):
-
     # Determinar o valor final da resposta e amplitude do degrau
     amplitude_degrau = degrau[-1]
     valor_final = saida_motor[-1]
 
     # Estimar K, Tau, e Theta
-    saida_ajustada = saida_motor - saida_motor[0]
+    saida_ajustada = saida_motor - saida_motor[0]  # type: ignore  # noqa: F841
     valor_final = saida_motor[-1]
     K = valor_final / amplitude_degrau
     tempo_t1 = 0
@@ -29,6 +24,7 @@ def estimate_pid_values(tempo, degrau, saida_motor):
 
     return K, tau_estimado, theta_estimado
 
+
 def CHR(k, tau, theta, amplitude_degrau, tempo):
     """
     Função para calcular a resposta do controlador CHR.
@@ -43,19 +39,23 @@ def CHR(k, tau, theta, amplitude_degrau, tempo):
     pid_chr = [kp_chr * td_chr, kp_chr, kp_chr / ti_chr]
     den_chr = [1, 0]
     controlador_chr = ctl.tf(pid_chr, den_chr)
-    
+
     # Adicionando theta ao controlador CHR
     num_delay, den_delay = ctl.pade(theta, 20)
-    controlador_chr_com_theta = ctl.series(ctl.tf(num_delay, den_delay), controlador_chr)
+    controlador_chr_com_theta = ctl.series(
+        ctl.tf(num_delay, den_delay), controlador_chr
+    )
     sistema_com_theta = ctl.tf(k, [tau, 1])
     chr_completo = ctl.series(sistema_com_theta, controlador_chr_com_theta)
-    
+
     sistema_chr_controlado = ctl.feedback(chr_completo, 1)
-    tempo_chr, saida_chr = ctl.step_response(sistema_chr_controlado * amplitude_degrau, tempo)
-    
+    tempo_chr, saida_chr = ctl.step_response(
+        sistema_chr_controlado * amplitude_degrau, tempo
+    )
+
     # Sobressinal do CHR
     informacoes_chr = ctl.step_info(sistema_chr_controlado)
-    sobressinal_chr = informacoes_chr['Overshoot']
+    sobressinal_chr = informacoes_chr["Overshoot"]  # type: ignore  # noqa: F841
     # print(f'OVERSHOOT  com CHR: {sobressinal_chr:.4f}.')
 
     return (tempo_chr, saida_chr)
@@ -82,13 +82,13 @@ def ITAE(k, tau, theta, amplitude_degrau, tempo, tau_inicial=47.50):
 
     pid_itae_delay = ctl.series(ctl.tf(num_delay, den_delay), controlador_itae)
 
-    sys_theta = ctl.tf(k, [tau_inicial, 1]) 
+    sys_theta = ctl.tf(k, [tau_inicial, 1])
     itae = ctl.series(pid_itae_delay, sys_theta)
     sys_ctrl_itae = ctl.feedback(itae, 1)
     temp_ITAE, sinal_ITAE = ctl.step_response(sys_ctrl_itae * amplitude_degrau, tempo)
-    
-    ITAE_info = ctl.step_info(sys_ctrl_itae) 
-    overshoot_itae = ITAE_info['Overshoot']
+
+    ITAE_info = ctl.step_info(sys_ctrl_itae)
+    overshoot_itae = ITAE_info["Overshoot"]  # type: ignore  # noqa: F841
     # print(f'OVERSHOOT por ITAE: {overshoot_itae:.4f}')
-    
+
     return (temp_ITAE, sinal_ITAE)
