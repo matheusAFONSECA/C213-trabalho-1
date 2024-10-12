@@ -1,5 +1,5 @@
-feat(project): Code modularized
+feat(project): Function of plot added
 
-Code has been modularized
-to be more simple to 
-integrate the PDI.
+The function with the porpuse to 
+plot the graph of the loop 
+opened/closed 

@@ -1,16 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_graph_1(option):
-    fig, ax = plt.subplots()
-    x = np.linspace(0, 10, 100)
-    if option == "Dataset":
-        y = np.sin(x)
-    else:
-        y = np.cos(x)
-    ax.plot(x, y)
-    return fig
-
 def plot_graph_2(values, option2):
     k, t, c = values
     fig, ax = plt.subplots()
@@ -25,13 +15,25 @@ def plot_graph_2(values, option2):
     ax.set_title(f"Gráfico PID - {option2}")
     return fig
 
-def plot_dataset_graph(tempo, degrau, saida_motor):
+def plot_dataset_graph(tempo, degrau, saida_motor, titulo):
     fig, ax = plt.subplots()
     
     ax.plot(tempo, degrau, label="Degrau")
     ax.plot(tempo, saida_motor, label="Saída do Motor")
     ax.set_xlabel('Tempo [s]')
     ax.set_ylabel('Amplitude')
+    ax.set_title(titulo)
+    ax.legend()
+    
+    return fig
+
+def plot_graph_open_loop(tempo_aberta, saida_aberta, tempo, degrau, titulo):
+    fig, ax = plt.subplots()
+    ax.plot(tempo_aberta, saida_aberta, label="Saída em Malha Aberta")
+    ax.plot(tempo, degrau, label="Degrau de Entrada")
+    ax.set_xlabel('Tempo [s]')
+    ax.set_ylabel('Amplitude')
+    ax.set_title(titulo)
     ax.legend()
     
     return fig
