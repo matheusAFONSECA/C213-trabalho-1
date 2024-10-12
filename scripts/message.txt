@@ -1,4 +1,8 @@
-feat(project): Code documented
+feat(project): Notebook added
 
-The code was documented
-using the rule of PEP8.
+A Notebook that runs
+all the parts of the
+pid control studies was
+added. A package with
+all plots were added 
+too.
