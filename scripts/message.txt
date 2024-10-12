@@ -1,0 +1,8 @@
+feat(project): Notebook added
+
+A Notebook that runs
+all the parts of the
+pid control studies was
+added. A package with
+all plots were added 
+too.
