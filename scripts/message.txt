@@ -1,4 +1,4 @@
-feat(project): Interface done
+feat(project): Code documented
 
-The interface runs 
-properly.
+The code was documented
+using the rule of PEP8.

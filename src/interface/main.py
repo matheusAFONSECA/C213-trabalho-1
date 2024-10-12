@@ -1,43 +1,37 @@
 import streamlit as st
+import scipy.io  # type: ignore
 from layout.left_column import render_left_column
 from layout.right_column import render_right_column
-import scipy.io  # type: ignore
 
 
 def main():
-    # Título centralizado
+    # Centralized title
     st.title("C213 - PROJETO DE SISTEMAS EMBARCADOS")
 
-    # Definição de valores padrão
-    initial_k, initial_theta, initial_tau = (
-        29.056,
-        10.10,
-        47.50,
-    )  # Valores iniciais para o gráfico da direita
-    arquivo_mat = r"dataset/Dataset_Grupo6.mat"  # Caminho do dataset .MAT
+    # Default values for the right column graph
+    initial_k, initial_theta, initial_tau = 29.056, 10.10, 47.50
+    arquivo_mat = r"dataset/Dataset_Grupo6.mat"  # Path to the .MAT dataset
 
-    # Carregar os dados do arquivo MAT e plotar o dataset
+    # Load data from the MAT file
     dados_mat = scipy.io.loadmat(arquivo_mat)
-    tempo = dados_mat["TARGET_DATA____ProjetoC213_Degrau"][
-        0, :
-    ]  # Primeira linha como tempo
+    tempo = dados_mat["TARGET_DATA____ProjetoC213_Degrau"][0, :]  # First row as time
     degrau = dados_mat["TARGET_DATA____ProjetoC213_Degrau"][
         1, :
-    ]  # Segunda linha como valores do degrau
+    ]  # Second row as step values
     saida_motor = dados_mat["TARGET_DATA____ProjetoC213_PotenciaMotor"][
         1, :
-    ]  # Segunda linha como saída do motor
+    ]  # Second row as motor output
 
-    amplitude_degrau = degrau[-1]
+    amplitude_degrau = degrau[-1]  # Step amplitude
 
-    # Divisão em duas colunas para os gráficos
+    # Split into two columns for the graphs
     col1, col2 = st.columns(2)
 
-    # Renderizar a coluna da esquerda
+    # Render the left column
     with col1:
         render_left_column(tempo, degrau, saida_motor)
 
-    # Renderizar a coluna da direita
+    # Render the right column
     with col2:
         render_right_column(
             initial_k,
