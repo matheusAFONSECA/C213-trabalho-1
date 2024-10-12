@@ -1,7 +1,5 @@
-feat(project): Base elements placed
+feat(project): Code modularized
 
-All elements wich will
-ne used in the interface 
-were placed, now it's
-necessary to integrate 
-the part od PDI.
+Code has been modularized
+to be more simple to 
+integrate the PDI.

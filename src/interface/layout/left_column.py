@@ -1,0 +1,30 @@
+import streamlit as st
+import scipy.io
+from utils.plot_utils import plot_dataset_graph, plot_graph_1
+
+def render_left_column(arquivo_mat):
+    """
+    Função responsável por renderizar a coluna esquerda com o gráfico e os controles.
+    """
+    st.subheader("Dados do circuito")
+
+    # Inicializa o gráfico com a opção padrão do rádio
+    option = st.radio("Escolha o gráfico:", ("Dataset", "Malha aberta/fechada"), index=0)
+
+    # Atualiza o título do gráfico da esquerda com base na opção selecionada
+    st.subheader(f"{option}")
+
+    if option == "Dataset":
+        # Carregar os dados do arquivo MAT e plotar o dataset
+        dados_mat = scipy.io.loadmat(arquivo_mat)
+        tempo = dados_mat['TARGET_DATA____ProjetoC213_Degrau'][0, :]  # Primeira linha como tempo
+        degrau = dados_mat['TARGET_DATA____ProjetoC213_Degrau'][1, :]  # Segunda linha como valores do degrau
+        saida_motor = dados_mat['TARGET_DATA____ProjetoC213_PotenciaMotor'][1, :]  # Segunda linha como saída do motor
+
+        fig_left = plot_dataset_graph(tempo, degrau, saida_motor)
+    else:
+        # Plotar a opção 'Malha aberta/fechada'
+        fig_left = plot_graph_1(option)
+
+    # Placeholder para o gráfico da esquerda
+    plot_left_placeholder = st.pyplot(fig_left)
