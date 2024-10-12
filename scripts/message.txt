@@ -1,5 +1,7 @@
-feat(project): Code for PID
+feat(project): Base elements placed
 
-Code used to plot
-the graphs and calculus
-for PID of the project.
+All elements wich will
+ne used in the interface 
+were placed, now it's
+necessary to integrate 
+the part od PDI.
