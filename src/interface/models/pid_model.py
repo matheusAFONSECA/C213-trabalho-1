@@ -1,5 +1,6 @@
 import control as ctl  # type: ignore
 
+
 def estimate_pid_values(tempo, degrau, saida_motor):
     """
     Estimate PID values based on the step response of the motor output.
@@ -37,6 +38,7 @@ def estimate_pid_values(tempo, degrau, saida_motor):
     theta_estimado = tempo_t2 - tau_estimado
 
     return K, tau_estimado, theta_estimado
+
 
 def CHR(k, tau, theta, amplitude_degrau, tempo):
     """
@@ -81,6 +83,7 @@ def CHR(k, tau, theta, amplitude_degrau, tempo):
     sobressinal_chr = informacoes_chr["Overshoot"]  # type: ignore  # noqa: F841
 
     return tempo_chr, saida_chr
+
 
 def ITAE(k, tau, theta, amplitude_degrau, tempo, tau_inicial=47.50):
     """

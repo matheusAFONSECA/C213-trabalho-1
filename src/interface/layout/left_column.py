@@ -53,15 +53,21 @@ def render_left_column(tempo, degrau, saida_motor):
         )
 
     else:
-        # Create the transfer function for the closed loop
-        closed_loop = ctl.tf([K], [tau_estimado * theta_estimado, tau_estimado, 1])
 
         # Adding the delay
         num_delay, den_delay = ctl.pade(theta_estimado, 20)
-        closed_loop_with_theta = ctl.series(ctl.tf(num_delay, den_delay), closed_loop)
+        
+        # Create the transfer function for the open loop
+        open_loop = ctl.tf([K], [tau_estimado, 1])
+        open_loop_with_theta = ctl.series(ctl.tf(num_delay, den_delay), open_loop)
+
+        # Create the transfer function for the closed loop
+        closed_loop = ctl.feedback(open_loop_with_theta, 1)
+
+        # closed_loop_with_theta = ctl.series(ctl.tf(num_delay, den_delay), closed_loop)
 
         # Simulate the step response
-        tempo_closed, saida_closed = ctl.step_response(closed_loop_with_theta, tempo)
+        tempo_closed, saida_closed = ctl.step_response(closed_loop, tempo)
 
         # Create plot for the closed loop
         fig_left = plot_graph_closed_loop(

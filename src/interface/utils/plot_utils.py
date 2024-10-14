@@ -67,6 +67,7 @@ def plot_graph_closed_loop(tempo_fechada, saida_fechada, tempo, degrau, titulo):
     ax.plot(tempo, degrau, label="Degrau de Entrada")
     ax.set_xlabel('Tempo [s]')
     ax.set_ylabel('Amplitude')
+    ax.set_ylim(-1, 800)
     ax.set_title(titulo)
     ax.legend()
     
