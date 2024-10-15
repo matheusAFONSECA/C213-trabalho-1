@@ -73,7 +73,7 @@ def plot_graph_closed_loop(tempo_fechada, saida_fechada, tempo, degrau, titulo):
     
     return fig
 
-def plot_graph_pid(tempo_res, sinal_res, tempo, Titulo, degrau, amplitude_degrau):
+def plot_graph_pid(tempo_res, sinal_res, tempo, Titulo, degrau):
     """
     Plots a graph for the PID controller response.
 
@@ -90,7 +90,7 @@ def plot_graph_pid(tempo_res, sinal_res, tempo, Titulo, degrau, amplitude_degrau
     """
     fig, ax = plt.subplots()
 
-    ax.plot(tempo_res, sinal_res * amplitude_degrau, label= Titulo)
+    ax.plot(tempo_res, sinal_res, label= Titulo)
     ax.plot(tempo_res, degrau, label='Degrau de Entrada')
     ax.set_xlabel('Tempo (segundos)')
     ax.set_xlim([0, len(tempo) * 0.1])
