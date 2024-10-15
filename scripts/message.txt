@@ -1,4 +1,4 @@
-fix(project): Ajustments of interface
+fix(project): Ajustments of calculus
 
 It was added some Ajustments
-of the interface 
+of the calculus. 
