@@ -39,6 +39,8 @@ graph TD;
 
     P[dataset/] --> Q[Dataset_Grupo6.mat]
 
+    S[presentation/] --> T[presentation.pdf]
+
     R[requirements.txt]
 
     subgraph Project Structure
@@ -59,6 +61,8 @@ graph TD;
         O
         P
         Q
+        S
+        T
         R
     end
 ```
@@ -83,6 +87,10 @@ graph TD;
 
 - **`/dataset/`**: Folder that stores the data files used in the project.
     - **`Dataset_Grupo6.mat`**: Main data file of the project, likely containing information in MATLAB format (.mat) for analysis.
+
+- **`/presentation/`**: Contains the PDF file of the presentation delivered on the presentation day.
+
+    - **`presentation.pdf`**: PDF of the project presentation.
 
 - **`requirements.txt`**: File listing all dependencies and libraries required to run the project, enabling easy environment setup using `pip`.
 

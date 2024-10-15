@@ -1,4 +1,5 @@
-fix(project): Ajustments of graph plot
+feat(project): Presentation added
 
-It was added some Ajustments
-of the graph plots
+It was added a Presentation
+wich was made in the day
+the project was show.
