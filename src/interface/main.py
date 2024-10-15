@@ -9,7 +9,7 @@ def main():
     st.title("C213 - PROJETO DE SISTEMAS EMBARCADOS")
 
     # Default values for the right column graph
-    initial_k, initial_theta, initial_tau = 29.056, 10.10, 47.50
+    initial_k, initial_theta, initial_tau = 0.09, 5.17, 47.25
     arquivo_mat = r"dataset/Dataset_Grupo6.mat"  # Path to the .MAT dataset
 
     # Load data from the MAT file

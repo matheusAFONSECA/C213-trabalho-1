@@ -1,8 +1,4 @@
-feat(project): Notebook added
+fix(project): Ajustments of calculus
 
-A Notebook that runs
-all the parts of the
-pid control studies was
-added. A package with
-all plots were added 
-too.
+It was added some Ajustments
+of the calculus. 

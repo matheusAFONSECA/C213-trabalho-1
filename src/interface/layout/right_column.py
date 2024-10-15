@@ -31,17 +31,37 @@ def render_right_column(
 
     # Inputs for PID parameters
     st.write("Parâmetros do PID")
-    k = st.number_input("K", value=initial_k)
-    theta = st.number_input("Theta", value=initial_theta)
-    tau = st.number_input("Tau", value=initial_tau)
+
+    k_vazio = st.empty()
+    theta_vazio = st.empty()
+    tau_vazio = st.empty()
+
+    if option2 == "CHR":
+        # Update the PID parameters based on the input values
+        initial_k = 0.09
+        initial_theta = 5.17
+        initial_tau = 47.25
+
+    elif option2 == "ITAE":
+        # Update the PID parameters based on the input values
+        initial_k = 0.12
+        initial_theta = 3.55
+        initial_tau = 61.86
+
+    k = k_vazio.number_input("Kp", value=initial_k)
+    theta = theta_vazio.number_input("Td", value=initial_theta)
+    tau = tau_vazio.number_input("Ti", value=initial_tau)
 
     # Update the graph based on the selected option
     if option2 == "CHR":
+
         tempo_chr, saida_chr = CHR(k, tau, theta, amplitude_degrau, tempo)
         fig_right = plot_graph_pid(
             tempo_chr, saida_chr, tempo, option2, degrau, amplitude_degrau
         )
+
     elif option2 == "ITAE":
+
         tempo_itae, saida_itae = ITAE(k, tau, theta, amplitude_degrau, tempo)
         fig_right = plot_graph_pid(
             tempo_itae, saida_itae, tempo, option2, degrau, amplitude_degrau
