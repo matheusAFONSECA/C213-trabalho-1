@@ -54,18 +54,12 @@ def render_right_column(
 
     # Update the graph based on the selected option
     if option2 == "CHR":
-
         tempo_chr, saida_chr = CHR(k, tau, theta, amplitude_degrau, tempo)
-        fig_right = plot_graph_pid(
-            tempo_chr, saida_chr, tempo, option2, degrau, amplitude_degrau
-        )
+        fig_right = plot_graph_pid(tempo_chr, saida_chr, tempo, option2, degrau)
 
     elif option2 == "ITAE":
-
         tempo_itae, saida_itae = ITAE(k, tau, theta, amplitude_degrau, tempo)
-        fig_right = plot_graph_pid(
-            tempo_itae, saida_itae, tempo, option2, degrau, amplitude_degrau
-        )
+        fig_right = plot_graph_pid(tempo_itae, saida_itae, tempo, option2, degrau)
 
     # Update the graph in the placeholder
     plot_right_placeholder.pyplot(fig_right)

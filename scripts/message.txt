@@ -1,4 +1,4 @@
-fix(project): Ajustments of calculus
+fix(project): Ajustments of graph plot
 
 It was added some Ajustments
-of the calculus. 
+of the graph plots
